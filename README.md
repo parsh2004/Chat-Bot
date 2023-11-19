@@ -175,11 +175,4 @@ api.upload_file(
 ![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/db479dea-6511-4592-91b2-de97945d1a10)
 
 ## Result:
-
-The Emotional sensing music therapy project is a real-time application that captures users' emotions through their webcam and provides personalized song recommendations. By leveraging computer vision techniques and a pre-trained emotion classification model, the application accurately detects users' emotions and overlays them on the live video stream.
-
-With the Emotional sensing music therapy project, users can explore a personalized music playlist tailored to their emotions, language, and preferred artist. Whether they want to discover new songs or find comfort in familiar melodies, this project enhances the music listening experience by leveraging the power of computer vision and machine learning.
-
-The project is a valuable tool for music enthusiasts, researchers, and developers interested in emotion recognition, recommendation systems, and human-computer interaction.
-
-
+The project successfully created a chatbot capable of generating voice responses for user prompts, enhancing the interactive and dynamic nature of conversations. This implementation brings a new dimension to user engagement by providing spoken responses tailored to the queries posed. The project's achievement lies in combining chatbot functionality with voice synthesis to create a seamless and natural conversational experience.
