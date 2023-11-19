@@ -1,4 +1,4 @@
-# Chat-Bot with open AI
+# Chat-Bot: A Conversational AI with Natural Voice Responses
 Th Aim of the project to make a chat bot response as voice note with the help of open AI.
 
 ## Features
