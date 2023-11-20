@@ -142,33 +142,8 @@ def chat_bot_response(message, history):
 demo = gr.ChatInterface(chat_bot_response,examples=["How are you doing?","What are your interests?","Which places do you like to visit?"])
 
 if _name_ == "_main_":
-    demo.launch() #To create a public link, set `share=True` in `launch()`. To enable errors and logs, set `debug=True` in `launch()`.
+    demo.launch() #To create a public link, set `share=True` in `launch()`. To enable errors and logs, set `debug=True` in `launch()`
 
-from huggingface_hub import notebook_login
-notebook_login()
-
-from huggingface_hub import HfApi
-api = HfApi()
-
-HUGGING_FACE_REPO_ID = "<<Hugging Face UserName/Repo ID>>"
-
-%mkdir /content/ChatBotWithOpenAILangChainAndPlayHT
-!wget -P  /content/ChatBotWithOpenAILangChainAndPlayHT/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAILangChainPlayHT2/app.py
-!wget -P /content/ChatBotWithOpenAILangChainAndPlayHT/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAILangChainPlayHT/requirements.txt
-
-%cd /content/ChatBotWithOpenAILangChainAndPlayHT
-
-api.upload_file(
-    path_or_fileobj="./requirements.txt",
-    path_in_repo="requirements.txt",
-    repo_id=HUGGING_FACE_REPO_ID,
-    repo_type="space")
-
-api.upload_file(
-    path_or_fileobj="./app.py",
-    path_in_repo="app.py",
-    repo_id=HUGGING_FACE_REPO_ID,
-    repo_type="space")
 ```
 ## Output:
 # Promting:
@@ -222,33 +197,7 @@ def get_text_response(user_message,history):
 demo = gr.ChatInterface(get_text_response, examples=["How are you doing?","What are your interests?","Which places do you like to visit?"])
 
 if _name_ == "_main_":
-    demo.launch() #To create a public link, set `share=True` in `launch()`. To enable errors and logs, set `debug=True` in `launch()`.
-
-from huggingface_hub import notebook_login
-notebook_login()
-
-from huggingface_hub import HfApi
-api = HfApi()
-
-HUGGING_FACE_REPO_ID = "<Hugging Face User Name/Repo Name>"
-
-%mkdir /content/ChatBotWithOpenAI
-!wget -P  /content/ChatBotWithOpenAI/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAIAndLangChain/app.py
-!wget -P /content/ChatBotWithOpenAI/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAIAndLangChain/requirements.txt
-
-%cd /content/ChatBotWithOpenAI
-
-api.upload_file(
-    path_or_fileobj="./requirements.txt",
-    path_in_repo="requirements.txt",
-    repo_id=HUGGING_FACE_REPO_ID,
-    repo_type="space")
-
-api.upload_file(
-    path_or_fileobj="./app.py",
-    path_in_repo="app.py",
-    repo_id=HUGGING_FACE_REPO_ID,
-    repo_type="space")
+    demo.launch() #To create a public link, set `share=True` in `launch()`. To enable errors and logs, set `debug=True` in `launch()`
 ```
 
 ## Output 
