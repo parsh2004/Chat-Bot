@@ -13,9 +13,15 @@ Th Aim of the project to make a chat bot response as voice note with the help of
 
 - Python 3.x
 - Jupyter Notebook (Anaconda 3)
--  Installiation :
--  1.	Clone the repositaryyy( jdszxdcfvgtyhujik)
-   2.	Install the required packages
+
+## Installiation :
+   # 1.	Clone the repositaryyy
+      ```
+     	https://github.com/parsh2004/Chat-Bot.git
+     	```
+   # 2.	Install the required packages
+        1.Python 3.x
+        2.Jupyter Notebook (Anaconda 3)
 
 ## Usage
 
@@ -25,6 +31,7 @@ Th Aim of the project to make a chat bot response as voice note with the help of
 
 ## Program:
 
+# Text to Voice
 ```
 !pip install langchain
 !pip install openai
@@ -71,7 +78,7 @@ headers = {
       "AUTHORIZATION": "Bearer "+ PLAY_HT_API_KEY,
       "X-USER-ID": PLAY_HT_USER_ID}
 
-[1:26 am, 20/11/2023] Praneet💫: def get_payload(text):
+def get_payload(text):
   return {
     "text": text,
     "voice": PLAY_HT_VOICE_ID,
@@ -96,8 +103,9 @@ def get_generated_audio(text):
       try:
         response_text = json.loads(response.text)
         if response_text['error_message']:
-          generated_response["r…
-[1:26 am, 20/11/2023] Praneet💫: def get_text_response(user_message):
+          generated_response
+
+def get_text_response(user_message):
     response = llm_chain.predict(user_message = user_message)
     return response
 
@@ -163,16 +171,93 @@ api.upload_file(
     repo_type="space")
 ```
 ## Output:
+# Promting:
+![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/b457fcaa-eba9-4959-811a-dda681db3e5d)
+# Outcome:
+![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/db479dea-6511-4592-91b2-de97945d1a10)
+
+# Text to Text
+```
+!pip install langchain
+!pip install openai
+!pip install gradio
+!pip install huggingface_hub
+
+import os
+import gradio as gr
+from langchain.chat_models import ChatOpenAI
+from langchain import LLMChain, PromptTemplate
+from langchain.memory import ConversationBufferMemory
+
+OPENAI_API_KEY="OPENAI_API_KEY"
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+
+template = """You are a helpful assistant to answer user queries.
+{chat_history}
+User: {user_message}
+Chatbot:"""
+
+prompt = PromptTemplate(
+    input_variables=["chat_history", "user_message"], template=template
+)
+
+memory = ConversationBufferMemory(memory_key="chat_history")
+
+# from langchain.llms import HuggingFacePipeline
+# hf = HuggingFacePipeline.from_model_id(
+#     model_id="gpt2",
+#     task="text-generation",)
+
+llm_chain = LLMChain(
+    llm=ChatOpenAI(temperature='0.5', model_name="gpt-3.5-turbo"),
+    prompt=prompt,
+    verbose=True,
+    memory=memory,
+)
+
+def get_text_response(user_message,history):
+    response = llm_chain.predict(user_message = user_message)
+    return response
+
+demo = gr.ChatInterface(get_text_response, examples=["How are you doing?","What are your interests?","Which places do you like to visit?"])
+
+if _name_ == "_main_":
+    demo.launch() #To create a public link, set `share=True` in `launch()`. To enable errors and logs, set `debug=True` in `launch()`.
+
+from huggingface_hub import notebook_login
+notebook_login()
+
+from huggingface_hub import HfApi
+api = HfApi()
+
+HUGGING_FACE_REPO_ID = "<Hugging Face User Name/Repo Name>"
+
+%mkdir /content/ChatBotWithOpenAI
+!wget -P  /content/ChatBotWithOpenAI/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAIAndLangChain/app.py
+!wget -P /content/ChatBotWithOpenAI/ https://s3.ap-south-1.amazonaws.com/cdn1.ccbp.in/GenAI-Workshop/ChatBotWithOpenAIAndLangChain/requirements.txt
+
+%cd /content/ChatBotWithOpenAI
+
+api.upload_file(
+    path_or_fileobj="./requirements.txt",
+    path_in_repo="requirements.txt",
+    repo_id=HUGGING_FACE_REPO_ID,
+    repo_type="space")
+
+api.upload_file(
+    path_or_fileobj="./app.py",
+    path_in_repo="app.py",
+    repo_id=HUGGING_FACE_REPO_ID,
+    repo_type="space")
+```
+
+## Output 
 
 # Promting:
 ![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/8874a3fc-86d3-417e-827a-e509ef392fa6)
 # Outcome:
 ![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/e168020e-927c-4f71-bdb9-66077244b404)
 
-# Promting:
-![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/b457fcaa-eba9-4959-811a-dda681db3e5d)
-# Outcome:
-![image](https://github.com/parsh2004/Chat-Bot/assets/95388047/db479dea-6511-4592-91b2-de97945d1a10)
 
 ## Result:
 The project successfully created a chatbot capable of generating voice responses for user prompts, enhancing the interactive and dynamic nature of conversations. This implementation brings a new dimension to user engagement by providing spoken responses tailored to the queries posed. The project's achievement lies in combining chatbot functionality with voice synthesis to create a seamless and natural conversational experience.
