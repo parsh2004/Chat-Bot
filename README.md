@@ -16,9 +16,9 @@ Th Aim of the project to make a chat bot response as voice note with the help of
 
 ## Installiation :
    # 1.	Clone the repositaryyy
-      ```
+   
      	https://github.com/parsh2004/Chat-Bot.git
-     	```
+     	
    # 2.	Install the required packages
         1.Python 3.x
         2.Jupyter Notebook (Anaconda 3)
